@@ -1,11 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchUser } from "../features/userDetailSlice";
+import { useEffect } from "react";
 
 const NavBar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const allUsers = useSelector((state) => state.user.users);
   const count = allUsers.length;
+  const [searchData, setSearchData] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(searchUser(searchData));
+  }, [searchData]);
 
   return (
     <>
@@ -53,6 +63,8 @@ const NavBar = () => {
                 type="search"
                 placeholder="Search..."
                 aria-label="Search"
+                value={searchData}
+                onChange={(e) => setSearchData(e.target.value)}
               />
               <button
                 className="btn btn-outline-secondary rounded-pill"
