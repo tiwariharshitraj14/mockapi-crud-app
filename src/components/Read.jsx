@@ -46,8 +46,16 @@ const Read = () => {
                     >
                       View
                     </button>
-                    <Link className="btn btn-sm btn-outline-success">Edit</Link>
-                    <Link className="btn btn-sm btn-outline-danger" onClick={() => dispatch(deleteUser(ele.id))}>
+                    <Link
+                      to={`/edit/${ele.id}`}
+                      className="btn btn-sm btn-outline-success"
+                    >
+                      Edit
+                    </Link>
+                    <Link
+                      className="btn btn-sm btn-outline-danger"
+                      onClick={() => dispatch(deleteUser(ele.id))}
+                    >
                       Delete
                     </Link>
                   </div>
