@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { readUser } from "../features/userDetailSlice";
+import { deleteUser, readUser } from "../features/userDetailSlice";
 import CustomModal from "./CustomModal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Read = () => {
   const dispatch = useDispatch();
@@ -25,9 +26,7 @@ const Read = () => {
 
   return (
     <div className="container my-5">
-      {
-        show && <CustomModal id={id} show= {show} setShow={setShow}/>
-      }
+      {show && <CustomModal id={id} show={show} setShow={setShow} />}
       <h3 className="text-center mb-4">All Users</h3>
       <div className="row g-4">
         {users &&
@@ -41,16 +40,16 @@ const Read = () => {
                   <div className="d-flex justify-content-between">
                     <button
                       className="btn btn-sm btn-outline-primary"
-                      onClick={() => {setId(ele.id), setShow(true)}}
+                      onClick={() => {
+                        setId(ele.id), setShow(true);
+                      }}
                     >
                       View
                     </button>
-                    <button className="btn btn-sm btn-outline-success">
-                      Edit
-                    </button>
-                    <button className="btn btn-sm btn-outline-danger">
+                    <Link className="btn btn-sm btn-outline-success">Edit</Link>
+                    <Link className="btn btn-sm btn-outline-danger" onClick={() => dispatch(deleteUser(ele.id))}>
                       Delete
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
