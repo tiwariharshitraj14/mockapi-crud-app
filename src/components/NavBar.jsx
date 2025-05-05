@@ -1,11 +1,17 @@
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const NavBar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const allUsers = useSelector((state) => state.user.users);
+  const count = allUsers.length
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            RTK
-          </a>
+          <h4 className="navbar-brand">RTK</h4>
           <button
             className="navbar-toggler"
             type="button"
@@ -20,14 +26,23 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link
+                  className={`nav-link ${currentPath === "/" ? "active" : ""}`}
+                  aria-current="page"
+                  to="/"
+                >
                   Create Post
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  All Post
-                </a>
+                <Link
+                  className={`nav-link ${
+                    currentPath === "/read" ? "active" : ""
+                  }`}
+                  to="/read"
+                >
+                  All Post ({count})
+                </Link>
               </li>
             </ul>
             <form className="d-flex" role="search">

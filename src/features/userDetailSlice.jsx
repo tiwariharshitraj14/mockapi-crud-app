@@ -23,6 +23,22 @@ export const createUser = createAsyncThunk(
   }
 );
 
+//read action
+export const readUser = createAsyncThunk(
+  "readUser",
+  async (_, { rejectWithValue }) => {
+    const response = await fetch(
+      "https://6818582a5a4b07b9d1cea451.mockapi.io/crud"
+    );
+    try {
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const userDetails = createSlice({
   name: "userDetails",
   initialState: {
@@ -41,7 +57,19 @@ const userDetails = createSlice({
       })
       .addCase(createUser.rejected, (state, action) => {
         state.loading = false;
+        state.users = action.payload.message;
+      })
+
+      .addCase(readUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(readUser.fulfilled, (state, action) => {
+        state.loading = false;
         state.users = action.payload;
+      })
+      .addCase(readUser.rejected, (state, action) => {
+        state.loading = false;
+        state.users = action.payload.message;
       });
   },
 });
