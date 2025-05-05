@@ -9,9 +9,9 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div className="container-fluid">
-          <h4 className="navbar-brand">RTK</h4>
+          <h4 className="navbar-brand fw-bold text-primary">RTK</h4>
           <button
             className="navbar-toggler"
             type="button"
@@ -27,7 +27,7 @@ const NavBar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${currentPath === "/" ? "active" : ""}`}
+                  className={`nav-link fw-semibold ${currentPath === "/" ? "active" : ""}`}
                   aria-current="page"
                   to="/"
                 >
@@ -36,7 +36,7 @@ const NavBar = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${
+                  className={`nav-link fw-semibold ${
                     currentPath === "/read" ? "active" : ""
                   }`}
                   to="/read"
@@ -45,14 +45,14 @@ const NavBar = () => {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            <form className="d-flex" role="search rounded-pill">
               <input
-                className="form-control me-2"
+                className="form-control me-2 rounded-pill"
                 type="search"
-                placeholder="Search"
+                placeholder="Search..."
                 aria-label="Search"
               />
-              <button className="btn btn-outline-secondary" type="submit">
+              <button className="btn btn-outline-secondary rounded-pill" type="submit">
                 Search
               </button>
             </form>

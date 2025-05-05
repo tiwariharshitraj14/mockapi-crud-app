@@ -5,42 +5,44 @@ import { readUser } from "../features/userDetailSlice";
 const Read = () => {
   const dispatch = useDispatch();
   const { users, loading } = useSelector((state) => state.user);
+
   useEffect(() => {
     dispatch(readUser());
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
-    return <h2>Loading</h2>;
+    return (
+      <div className="text-center my-5">
+        <div className="spinner-border text-primary" role="status" />
+        <p className="mt-2">Loading...</p>
+      </div>
+    );
   }
+
   return (
-    <div>
-      <h2>All Data</h2>
-      {users &&
-        users.map((ele) => (
-          <div
-            className="card mx-auto my-2"
-            style={{ width: "18rem" }}
-            key={ele.id}
-          >
-            <div className="card-body">
-              <h5 className="card-title">{ele.name}</h5>
-              <h6 className="card-subtitle mb-2 text-body-secondary">
-                {ele.email}
-              </h6>
-              <p className="card-text">{ele.gender}</p>
-              <a href="#" className="card-link">
-                View
-              </a>
-              <a href="#" className="card-link">
-                Edit
-              </a>
-              <a href="#" className="card-link">
-                Delete
-              </a>
+    <div className="container my-5">
+      <h3 className="text-center mb-4">All Users</h3>
+      <div className="row g-4">
+        {users &&
+          users.map((ele) => (
+            <div className="col-md-4" key={ele.id}>
+              <div className="card shadow-sm h-100">
+                <div className="card-body">
+                  <h5 className="card-title">{ele.name}</h5>
+                  <h6 className="card-subtitle mb-2 text-muted">{ele.email}</h6>
+                  <p className="card-text">Gender: {ele.gender}</p>
+                  <div className="d-flex justify-content-between">
+                    <button className="btn btn-sm btn-outline-primary">View</button>
+                    <button className="btn btn-sm btn-outline-success">Edit</button>
+                    <button className="btn btn-sm btn-outline-danger">Delete</button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   );
 };
+
 export default Read;
