@@ -1,0 +1,103 @@
+/* Modal Background */
+.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+  
+  /* Modal Container */
+  .modalContainer {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  /* Modal Header */
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .modalHeader h2 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  /* Close Button */
+  .closeBtn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+  }
+  
+  .closeBtn:hover {
+    color: #ff5c5c;
+  }
+  
+  /* Modal Body */
+  .modalBody {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .userDetails p {
+    margin: 10px 0;
+  }
+  
+  /* Modal Footer */
+  .modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .modalFooter .closeBtn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .modalFooter .closeBtn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  

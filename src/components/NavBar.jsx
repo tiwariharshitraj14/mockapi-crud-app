@@ -5,7 +5,7 @@ const NavBar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const allUsers = useSelector((state) => state.user.users);
-  const count = allUsers.length
+  const count = allUsers.length;
 
   return (
     <>
@@ -27,7 +27,9 @@ const NavBar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
-                  className={`nav-link fw-semibold ${currentPath === "/" ? "active" : ""}`}
+                  className={`nav-link fw-semibold ${
+                    currentPath === "/" ? "active" : ""
+                  }`}
                   aria-current="page"
                   to="/"
                 >
@@ -52,7 +54,10 @@ const NavBar = () => {
                 placeholder="Search..."
                 aria-label="Search"
               />
-              <button className="btn btn-outline-secondary rounded-pill" type="submit">
+              <button
+                className="btn btn-outline-secondary rounded-pill"
+                type="submit"
+              >
                 Search
               </button>
             </form>
