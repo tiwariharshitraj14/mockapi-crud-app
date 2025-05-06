@@ -62,8 +62,6 @@ export const deleteUser = createAsyncThunk(
 export const updatedUser = createAsyncThunk(
   "updatedUser",
   async (data, { rejectWithValue }) => {
-    console.log("update data", data);
-
     const response = await fetch(
       `https://6818582a5a4b07b9d1cea451.mockapi.io/crudapi/${data.id}`,
       {

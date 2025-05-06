@@ -9,11 +9,9 @@ const Create = () => {
   const navigate = useNavigate();
   const getData = (e) => {
     setUser({ ...user, [e.target.name]: [e.target.value] });
-    console.log(user);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User", user);
     dispatch(createUser(user));
     navigate("/read");
   };
